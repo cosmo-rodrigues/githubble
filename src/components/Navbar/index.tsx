@@ -22,7 +22,7 @@ export function Navbar() {
         <LeftContainer>
           <NavbarLinkContainer>
             <NavbarLink to="/">Home</NavbarLink>
-            <NavbarLink to="/user">User</NavbarLink>
+            <NavbarLink to="/user">Find</NavbarLink>
             <OpenLinksButton
               onClick={() => {
                 setExtendNavbar((curr) => !curr);
@@ -39,7 +39,7 @@ export function Navbar() {
       {extendNavbar && (
         <NavbarExtendedContainer>
           <NavbarLinkExtended to="/">Home</NavbarLinkExtended>
-          <NavbarLinkExtended to="/user">User</NavbarLinkExtended>
+          <NavbarLinkExtended to="/user">Find</NavbarLinkExtended>
         </NavbarExtendedContainer>
       )}
     </NavbarContainer>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Container } from './style';
 
 export function NotFound() {
   const navigate = useNavigate();
@@ -26,10 +27,10 @@ export function NotFound() {
   }, []);
 
   return (
-    <div>
-      404 - Not Found
+    <Container>
+      <h1>404 - Not Found</h1>
       <br />
-      Page not found, going to home... {seconds}
-    </div>
+      <p>Page not found, going to home... {seconds}</p>
+    </Container>
   );
 }

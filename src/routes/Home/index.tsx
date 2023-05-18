@@ -6,10 +6,10 @@ import { Container, LoadButton, Main } from './style';
 
 export function Home() {
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state) => state.user.user);
+  const user = useAppSelector((state) => state.user.users);
   const currentPage = useAppSelector((state) => state.user.currentPage);
   const [isLoading, setIsLoading] = useState(false);
-  const [showLoadMoreButton, setShowLoadMoreButton] = useState(true);
+  const [showLoadMoreButton] = useState(true);
 
   const queryString = `since=${currentPage}&per_page=10`;
 

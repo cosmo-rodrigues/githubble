@@ -12,7 +12,14 @@ export const api = (type = 'user') => {
 
   const API = axios.create({
     baseURL: paths[type],
-    headers: {},
+    headers: {
+      // 'Access-Control-Allow-Headers':
+      //   'Origin, X-Requested-With, Content-Type, Accept',
+      // 'Access-Control-Allow-Origin': '*',
+      // 'Content-Type': 'application/json',
+      // 'Access-Control-Allow-Credentials': true,
+      'X-GitHub-Api-Version': '2022-11-28',
+    },
   });
 
   const baseURL = paths[type];
@@ -36,7 +43,7 @@ export const api = (type = 'user') => {
   API.interceptors.request.use(
     (config) => {
       const token = import.meta.env.VITE_APP_GITHUB_TOKEN;
-      if (token) config.headers!['Authorization'] = token.replaceAll('"', '');
+      if (token) config.headers!['Authorization'] = ` Bearer ${token}`
 
       return config;
     },

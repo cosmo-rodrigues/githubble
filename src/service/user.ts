@@ -1,11 +1,11 @@
 import { get } from './api';
 
-const findByUserName = async (name: string) =>
-  get({ type: 'user', service: `/users/${name}` });
+const findByUserName = async (login: string) =>
+  get({ type: 'user', service: `/users/${login}` });
 
 const findAll = async (queryString: any) => get({ type: 'user', service: `/users`, queryString });
 
-const findAllRepositoriesByUserName = async (name: string) => get({ type: 'user', service: `/users${name}/repos` });
+const findAllRepositoriesByUserName = async (login: string) => get({ type: 'user', service: `/users/${login}/repos` });
 
 export const userService = {
   findByUserName,
