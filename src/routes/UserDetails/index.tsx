@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { MdLocationPin } from 'react-icons/md';
 import { fetchUser } from '../../store/actions/userActions';
@@ -45,7 +45,7 @@ export function UserDetails() {
         </Stats>
       </Card>
       <Card>
-        <RepositoryTable user={id}/>
+        <RepositoryTable user={id!}/>
       </Card>
     </Container>
   );

@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Table, TableCell, TableHeader, TableRow } from './style';
-import { stat } from 'fs';
 import { IRepository } from '../../dtos';
 import { useAppDispatch, useAppSelector } from '../../store/store';
 import { fetchUserRepos } from '../../store/actions/userActions';
