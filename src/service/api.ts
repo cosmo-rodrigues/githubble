@@ -55,9 +55,6 @@ export const get = async (config: IConfig) => {
   if (queryString) {
     return await api(type).get(`${service}/${queryString}`);
   }
-  console.log('Data: adasd');
-  const data = await api(type).get(`${service}`);
-  console.log('Data: ', data);
 
   return await api(type).get(`${service}`);
 };

@@ -1,23 +1,21 @@
-// @ts-nocheck
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/store';
 import { fetchUsers } from '../../store/actions/userActions';
+import { UserCard } from '../../components/UserCard';
+import { Container } from './style';
 
 export function Home() {
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.user.user);
-  console.log(user);
+
   useEffect(() => {
     dispatch(fetchUsers());
   }, []);
   return (
-    <>
-      <div>Home</div>;
-      <ul>
-        {user.map((user) => (
-          <li key={user.login}>{user.login}</li>
-        ))}
-      </ul>
-    </>
+    <Container>
+      {user.map((user) => (
+        <UserCard key={user.id} user={user} />
+      ))}
+    </Container>
   );
 }

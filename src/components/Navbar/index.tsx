@@ -1,11 +1,47 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import {
+  NavbarContainer,
+  LeftContainer,
+  RightContainer,
+  NavbarExtendedContainer,
+  NavbarInnerContainer,
+  NavbarLinkContainer,
+  NavbarLink,
+  Logo,
+  OpenLinksButton,
+  NavbarLinkExtended,
+} from "./style";
+import hubbleLogo from "../../assets/cats_star.png";
 
 export function Navbar() {
+  const [extendNavbar, setExtendNavbar] = useState(false);
+
   return (
-    <nav>
-      <Link to='/'>Home</Link>
-      <Link to='/user'>User</Link>
-    </nav>
+    <NavbarContainer extendNavbar={extendNavbar}>
+      <NavbarInnerContainer>
+        <LeftContainer>
+          <NavbarLinkContainer>
+            <NavbarLink to="/">Home</NavbarLink>
+            <NavbarLink to="/user">User</NavbarLink>
+            <OpenLinksButton
+              onClick={() => {
+                setExtendNavbar((curr) => !curr);
+              }}
+            >
+              {extendNavbar ? <>&#10005;</> : <> &#8801;</>}
+            </OpenLinksButton>
+          </NavbarLinkContainer>
+        </LeftContainer>
+        <RightContainer>
+          <Logo src={hubbleLogo} alt="Hubble Logo" />
+        </RightContainer>
+      </NavbarInnerContainer>
+      {extendNavbar && (
+        <NavbarExtendedContainer>
+          <NavbarLinkExtended to="/">Home</NavbarLinkExtended>
+          <NavbarLinkExtended to="/user">User</NavbarLinkExtended>
+        </NavbarExtendedContainer>
+      )}
+    </NavbarContainer>
   );
 }

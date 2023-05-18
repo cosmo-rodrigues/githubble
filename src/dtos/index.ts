@@ -1,7 +1,9 @@
 export interface IUserInfo {
   id: number;
-  name: string;
+  login: string;
   email: string;
+  avatar_url: string;
+  gravatar_id?: string;
 }
 
 export interface IConfig {
