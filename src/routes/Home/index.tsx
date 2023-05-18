@@ -6,6 +6,7 @@ import { fetchUsers } from '../../store/actions/userActions';
 export function Home() {
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.user.user);
+  console.log(user);
   useEffect(() => {
     dispatch(fetchUsers());
   }, []);
@@ -14,7 +15,7 @@ export function Home() {
       <div>Home</div>;
       <ul>
         {user.map((user) => (
-          <li key={user.id}>{user.name}</li>
+          <li key={user.login}>{user.login}</li>
         ))}
       </ul>
     </>

@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { userService } from '../../service/user';
 
 export const fetchUsers = createAsyncThunk('user/fetchUsers', async () => {
-  return axios
-    .get('https://jsonplaceholder.typicode.com/users')
-    .then((response) => response.data);
+  const users = await userService.findAll();
+  console.log("Users: ", users);
+  return users;
 });
