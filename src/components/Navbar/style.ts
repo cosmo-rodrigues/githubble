@@ -6,11 +6,14 @@ interface NavbarContainerProps {
 }
 
 export const NavbarContainer = styled.nav<NavbarContainerProps>`
-  width: 100%;
-  height: ${(props) => (props.extendNavbar ? "60vh" : "80px")};
   background-color: #2b3566;
   display: flex;
   flex-direction: column;
+  height: ${(props) => (props.extendNavbar ? "60vh" : "80px")};
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  width: 100%;
 
   @media (min-width: 700px) {
     height: 80px;

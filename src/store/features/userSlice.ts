@@ -8,6 +8,7 @@ const initialState = {
   loading: false,
   user: [] as IUserInfo[],
   error: {},
+  currentPage: 1,
 };
 
 export const userSlice = createSlice({
@@ -20,8 +21,11 @@ export const userSlice = createSlice({
     },
     [fetchUsers.fulfilled]: (state, action) => {
       state.loading = false;
-      state.user = action.payload.data;
-      state.error = '';
+      const newUsers = action.payload.filter((newUser) => {
+        return !state.user.some((user) => user.id === newUser.id);
+      });
+      state.user = [...state.user, ...newUsers];
+      state.currentPage++;
     },
     [fetchUsers.rejected]: (state, action) => {
       state.loading = false;

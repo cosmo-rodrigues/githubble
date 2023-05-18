@@ -35,8 +35,6 @@ export const api = (type = 'user') => {
 
   API.interceptors.request.use(
     (config) => {
-      if (config.url!.indexOf('users/login') !== -1) return config;
-
       const token = import.meta.env.VITE_APP_GITHUB_TOKEN;
       if (token) config.headers!['Authorization'] = token.replaceAll('"', '');
 
@@ -53,7 +51,7 @@ export const api = (type = 'user') => {
 export const get = async (config: IConfig) => {
   const { type, service, queryString } = config;
   if (queryString) {
-    return await api(type).get(`${service}/${queryString}`);
+    return await api(type).get(`${service}?${queryString}`);
   }
 
   return await api(type).get(`${service}`);
